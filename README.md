@@ -1,10 +1,14 @@
 Schnitzeless
 Komandas nosaukums: Schnitzeless
 Biedri: Kristers, Dāvis, Miervaldis, Aigars
-Tēma
+Tēma: Mēs apskatījām cik ienesīgi ir uzņēmumiem pārdot dažādus projektus izmantojot datubāzi. Aplūkojām:
+Ienākumi no dažādiem produktiem laikā
+Kopējos ienākumus no produkta
+Ienākumus no produktiem atsevišķos periodos
+
 21.02.2025
 
-Mēs izdomājām, ko katrs darīs Miervaldis(dumplingbooi) Video Kristers(Snepstukalns) Grafiki Aigars(Polozet) Statistikas raksturlielumu aprēķināšana Dāvis(KrumIKAS) Tabula Visi kopā: Secinājumi kopsavilkums
+Mēs izdomājām, ko katrs darīs Miervaldis(dumplingbooi) Video, kods; Kristers(Snepstukalns) Grafiki; Aigars(Polozet) Statistikas raksturlielumu aprēķināšana; Dāvis(KrumIKAS) Tabula Visi kopā: Prezentācija un video
 
 28.02.2025 Mieris atrada csv failius, kurus varees izmantot, lai izdariitu shito fakino projektu Kristers sadala lomas
 
