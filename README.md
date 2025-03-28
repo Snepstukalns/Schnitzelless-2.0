@@ -1,3 +1,17 @@
+Schnitzeless
+Komandas nosaukums: Schnitzeless
+Biedri: Kristers, Dāvis, Miervaldis, Aigars
+Tēma
+21.02.2025
+
+Mēs izdomājām, ko katrs darīs Miervaldis(dumplingbooi) Video Kristers(Snepstukalns) Grafiki Aigars(Polozet) Statistikas raksturlielumu aprēķināšana Dāvis(KrumIKAS) Tabula Visi kopā: Secinājumi kopsavilkums
+
+28.02.2025 Mieris atrada csv failius, kurus varees izmantot, lai izdariitu shito fakino projektu Kristers sadala lomas
+
+21.03.2025 Pēc ilgas nekā nedarīšanas mēs beidzot saņēmāmies un uzrakstījām kodu, kas aizņēma ļoti ilgu laiku, sviedrus, asaras un asinis, bet beidzot mums ir lielāka daļa koda un dzīve liekas daudz labāka 🙂
+
+
+
 1. Tehnoloģijas izvēle
 Flask tika izvēlēts kā galvenais tīmekļa ietvars, jo tas ir viegls un vienkāršs, taču tajā pašā laikā nodrošina pietiekamu elastību darbam ar datubāzi, API un vizualizācijām. SQLAlchemy tika izmantots kā ORM, lai vienkāršotu mijiedarbību ar SQLite datubāzi.
 
