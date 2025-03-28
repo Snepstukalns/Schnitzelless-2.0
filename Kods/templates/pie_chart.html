@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pie Chart - Earnings by Product</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fa;
+            padding: 20px;
+            color: #333;
+        }
+
+        h2 {
+            text-align: center;
+            color: #007bff;
+        }
+
+        nav {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        #canvas-container {
+            width: 35%;
+            height: 35%;
+            max-width: 900px;
+            margin: 40px auto;
+        }
+
+        canvas {
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+        .chart-title {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Matplotlib chart container */
+        #matplotlib-container {
+            display: none;
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            overflow: auto; /* Prevents cropping if the image is too large */
+        }
+
+        #matplotlib-container img {
+            max-width: 100%;
+            max-height: none;
+            display: block;
+            margin: auto;
+            margin-bottom: 20px; /* Add spacing below the image */
+        }
+
+        .close-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .close-btn:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+    <h2>Earnings by Product (Pie Chart)</h2>
+    <nav>
+        <a href="/">Bar Chart</a> |
+        <a href="/pie">Pie Chart</a> |
+        <a href="/histogram">Histogram</a> |
+        <button onclick="window.location.href='/download'" style="margin-left: 10px; padding: 5px 10px; font-size: 16px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">
+            Download CSV
+        </button>
+        <button onclick="showMatplotlibChart()" style="margin-left: 10px; padding: 5px 10px; font-size: 16px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer;">
+            Show Matplotlib Chart
+        </button>
+    </nav>
+
+    <div id="canvas-container">
+        <div class="chart-title">Total Earnings by Product</div>
+        <canvas id="earningsPieChart"></canvas>
+    </div>
+
+    <!-- Matplotlib Chart Container -->
+    <div id="matplotlib-container">
+        <h2>Matplotlib Sales Chart</h2>
+        <img id="matplotlibImage" src="/matplotlib_chart_image" alt="Matplotlib Chart">
+        <br>
+        <button class="close-btn" onclick="hideMatplotlibChart()">Close</button>
+    </div>
+
+    <script>
+        async function fetchData() {
+            const response = await fetch('/data');
+            const data = await response.json();
+            return data;
+        }
+
+        async function renderPieChart() {
+            const salesData = await fetchData();
+
+            // Aggregate earnings by product
+            const earningsByProduct = {};
+
+            salesData.forEach(item => {
+                const { product, price } = item;
+                if (!earningsByProduct[product]) {
+                    earningsByProduct[product] = 0;
+                }
+                earningsByProduct[product] += price;
+            });
+
+            // Prepare chart data
+            const products = Object.keys(earningsByProduct);
+            const earnings = products.map(product => earningsByProduct[product]);
+
+            // Create the pie chart
+            const ctx = document.getElementById('earningsPieChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: products,
+                    datasets: [{
+                        data: earnings,
+                        backgroundColor: products.map(() => getRandomColor()),
+                        borderColor: 'rgba(0, 0, 0, 0.2)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                font: {
+                                    size: 14
+                                }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(tooltipItem) {
+                                    return tooltipItem.label + ': $' + tooltipItem.raw.toFixed(2);
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Function to show the Matplotlib chart and scroll the page down
+        function showMatplotlibChart() {
+            const matplotlibContainer = document.getElementById('matplotlib-container');
+            matplotlibContainer.style.display = 'block'; // Make the chart container visible
+            matplotlibContainer.scrollIntoView({ behavior: "smooth" }); // Smoothly scroll to the chart
+        }
+
+        // Function to hide the Matplotlib chart container
+        function hideMatplotlibChart() {
+            const matplotlibContainer = document.getElementById('matplotlib-container');
+            matplotlibContainer.style.display = 'none';
+        }
+
+        // Helper function for generating random colors for the chart
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        renderPieChart();
+    </script>
+</body>
+</html>
