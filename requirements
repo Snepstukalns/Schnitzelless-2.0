@@ -1,0 +1,5 @@
+pip install flask
+pip install flask-cors
+pip install flask-sqlalchemy
+pip install matplotlib
+visam jābūt jaunākajā pieejamajā versijā
