@@ -10,7 +10,7 @@ Ienākumus no produktiem atsevišķos periodos
 
 Mēs izdomājām, ko katrs darīs Miervaldis(dumplingbooi) Video, kods; Kristers(Snepstukalns) Grafiki; Aigars(Polozet) Statistikas raksturlielumu aprēķināšana; Dāvis(KrumIKAS) Tabula Visi kopā: Prezentācija un video
 
-28.02.2025 Mieris atrada csv failius, kurus varees izmantot, lai izdariitu shito fakino projektu Kristers sadala lomas
+28.02.2025 Mieris atrada csv failius, kurus varees izmantot, lai izdarīt šo projektu Kristers sadalīja lomas
 
 21.03.2025 Pēc ilgas nekā nedarīšanas mēs beidzot saņēmāmies un uzrakstījām kodu, kas aizņēma ļoti ilgu laiku, sviedrus, asaras un asinis, bet beidzot mums ir lielāka daļa koda un dzīve liekas daudz labāka 🙂
 
